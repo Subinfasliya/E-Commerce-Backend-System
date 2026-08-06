@@ -3,8 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const healthRoute = require("./routes/healthRoutes");
-const userRoute = require('./routes/userRoutes')
+const userRoute = require("./routes/userRoutes");
 const connectDB = require("./config/dbConnection");
+const errorHandler = require("./middlewares/errorHandler");
+const notFound = require("./middlewares/notFound");
 
 const PORT = process.env.PORT || 5000;
 
@@ -13,7 +15,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", healthRoute);
-app.use("/api/v1", userRoute);
+app.use("/api/v1/user", userRoute);
+
+app.use(notFound);
+
+app.use(errorHandler)
 
 const startServer = async () => {
   try {
@@ -28,4 +34,4 @@ const startServer = async () => {
   }
 };
 
-startServer()
+startServer();
