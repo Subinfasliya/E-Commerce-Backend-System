@@ -1,0 +1,29 @@
+{
+  "name": "e-commerce-backend-system",
+  "version": "1.0.0",
+  "description": "Build a secure, scalable, and production-ready backend that follows modern backend development standards and can serve as the API for web and mobile e-commerce applications.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Subinfasliya/E-Commerce-Backend-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Subinfasliya/E-Commerce-Backend-System/issues"
+  },
+  "homepage": "https://github.com/Subinfasliya/E-Commerce-Backend-System#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.1"
+  }
+}
