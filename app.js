@@ -3,7 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const healthRoute = require("./routes/healthRoutes");
-const userRoute = require("./routes/userRoutes");
+const authRoutes = require("./routes/authenticationRoutes");
+const userProfileRoutes = require("./routes/userProfileRoutes")
 const connectDB = require("./config/dbConnection");
 const errorHandler = require("./middlewares/errorHandler");
 const notFound = require("./middlewares/notFound");
@@ -15,7 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", healthRoute);
-app.use("/api/v1/user", userRoute);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/profile", userProfileRoutes)
 
 app.use(notFound);
 
