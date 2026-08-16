@@ -7,6 +7,7 @@ const protect = require("../middlewares/authMiddleware");
 const { adminAccessOnly } = require("../middlewares/adminMiddleware");
 const validateBody = require("../middlewares/validateMiddleware");
 const { createProductSchema } = require("../validations/productValidate");
+const upload = require("../middlewares/upload");
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ router.post(
   "/",
   protect,
   adminAccessOnly,
+  upload.single("image"),
   validateBody(createProductSchema),
   createProduct,
 );
