@@ -4,7 +4,8 @@ const cors = require("cors");
 const app = express();
 const healthRoute = require("./routes/healthRoutes");
 const authRoutes = require("./routes/authenticationRoutes");
-const userProfileRoutes = require("./routes/userProfileRoutes")
+const userProfileRoutes = require("./routes/userProfileRoutes");
+const productRoutes = require("./routes/productRoutes");
 const connectDB = require("./config/dbConnection");
 const errorHandler = require("./middlewares/errorHandler");
 const notFound = require("./middlewares/notFound");
@@ -17,11 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", healthRoute);
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/profile", userProfileRoutes)
+app.use("/api/v1/profile", userProfileRoutes);
+app.use("/api/v1/product", productRoutes);
 
 app.use(notFound);
 
-app.use(errorHandler)
+app.use(errorHandler);
 
 const startServer = async () => {
   try {

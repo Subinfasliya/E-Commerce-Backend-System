@@ -52,6 +52,7 @@ const loginController = async (req, res, next) => {
 
     const token = signToken({
       id: user._id,
+      role: user.role,
     });
 
     return res.status(200).json({
@@ -62,6 +63,7 @@ const loginController = async (req, res, next) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        role: user.role,
       },
     });
   } catch (error) {
