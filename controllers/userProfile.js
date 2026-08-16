@@ -27,13 +27,10 @@ const updateProfile = async (req, res, next) => {
     if (name !== undefined) updateData.name = name;
     if (email !== undefined) updateData.email = email;
 
-    const updatedUser = await User.findByIdAndUpdate(
-      req.user._id,
-      {
-        $set: updateData,
-      },
-      { returnDocument: "after", runValidators: true },
-    ).select("-password");
+    const updatedUser = await User.findByIdAndUpdate(req.user._id, updateData, {
+      returnDocument: "after",
+      runValidators: true,
+    }).select("-password");
 
     res.status(200).json({
       success: true,
