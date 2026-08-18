@@ -2,6 +2,7 @@ const express = require("express");
 const {
   createProduct,
   getAllProducts,
+  updateProduct,
 } = require("../controllers/productController");
 const protect = require("../middlewares/authMiddleware");
 const { adminAccessOnly } = require("../middlewares/adminMiddleware");
@@ -20,5 +21,7 @@ router.post(
   validateBody(createProductSchema),
   createProduct,
 );
+router.put("/:id", protect,upload.single("image"), adminAccessOnly, updateProduct)
 
 module.exports = router;
+

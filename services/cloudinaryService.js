@@ -10,9 +10,6 @@ const uploadImage = (file) => {
       {
         folder: "Shop-Mart/products",
         resource_type: "image",
-        public_id: `${Date.now()}${extension}`,
-        use_filename: true,
-        unique_filename: false,
       },
       (error, result) => {
         if (error) return reject(error);
@@ -26,8 +23,11 @@ const uploadImage = (file) => {
 };
 
 const deleteImage = async (publicId) => {
+  if (!publicId) return;
+
   return cloudinary.uploader.destroy(publicId, {
     resource_type: "image",
+    invalidate: true,
   });
 };
 

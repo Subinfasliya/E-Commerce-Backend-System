@@ -44,7 +44,11 @@ const createProductSchema = Joi.object({
   image: Joi.object({
     url: Joi.string().uri().required(),
     public_id: Joi.string().trim().allow("").required(),
+  }).messages({
+    "object.base":"Image is required",
+    "any.required":"Image is required"
   }),
+
 });
 
 module.exports = { createProductSchema };
